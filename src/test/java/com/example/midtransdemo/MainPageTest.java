@@ -34,10 +34,11 @@ public class MainPageTest {
         mainPage.inputName.setValue(String.valueOf(faker.name()));
         mainPage.inputEmail.setValue(faker.internet().emailAddress());
         mainPage.inputPhone.setValue(faker.phoneNumber().phoneNumber().toString());
-        mainPage.inputAddress.setValue(faker.address().fullAddress());
         mainPage.inputCity.setValue(faker.address().cityName());
+        mainPage.inputAddress.setValue(faker.address().fullAddress());
         mainPage.inputPostalCode.setValue(faker.address().zipCode());
         mainPage.checkoutButton.click();
+        assertEquals(mainPage.iframeCheckout.isDisplayed(), true);
     }
 //    @Test
 //    public void search() {

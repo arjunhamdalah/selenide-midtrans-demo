@@ -15,5 +15,6 @@ public class MainPage {
     public SelenideElement inputAddress = $x("//*[@data-reactid='.0.0.1.0.3.0.0.4.1.0']");
     public SelenideElement inputPostalCode = $x("//*[@data-reactid='.0.0.1.0.3.0.0.5.1.0']");
     public SelenideElement checkoutButton = $(".cart-checkout");
+    public SelenideElement iframeCheckout = $("#snap-midtrans");
 
 }
