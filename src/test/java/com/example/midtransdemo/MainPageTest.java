@@ -7,10 +7,11 @@ import com.github.javafaker.Faker;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.annotations.*;
 
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.*;
 import static org.testng.Assert.*;
 
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPageTest {
@@ -31,7 +32,7 @@ public class MainPageTest {
     @Test
     public void checkout() {
         mainPage.buyNowButton.click();
-        mainPage.inputName.setValue(String.valueOf(faker.name()));
+        mainPage.inputName.setValue(String.valueOf(faker.name().name()));
         mainPage.inputEmail.setValue(faker.internet().emailAddress());
         mainPage.inputPhone.setValue(faker.phoneNumber().phoneNumber().toString());
         mainPage.inputCity.setValue(faker.address().cityName());
@@ -40,30 +41,23 @@ public class MainPageTest {
         mainPage.checkoutButton.click();
         assertEquals(mainPage.iframeCheckout.isDisplayed(), true);
     }
-//    @Test
-//    public void search() {
-//        mainPage.searchButton.click();
-//
-//        $("[data-test='search-input']").sendKeys("Selenium");
-//        $("button[data-test='full-search-button']").click();
-//
-//        $("input[data-test='search-input']").shouldHave(attribute("value", "Selenium"));
-//    }
-//
-//    @Test
-//    public void toolsMenu() {
-//        mainPage.toolsMenu.click();
-//
-//        $("div[data-test='main-submenu']").shouldBe(visible);
-//    }
-//
-//    @Test
-//    public void navigationToAllTools() {
-//        mainPage.seeDeveloperToolsButton.click();
-//        mainPage.findYourToolsButton.click();
-//
-//        $("#products-page").shouldBe(visible);
-//
-//        assertEquals(Selenide.title(), "All Developer Tools and Products by JetBrains");
-//    }
+
+    @Test
+    public void payment() {
+        this.checkout();
+        Selenide.switchTo().frame(0);
+        mainPage.creditCardButton.click();
+        mainPage.inputCreditCardNumber.setValue("5211111111111117");
+        mainPage.inputCardExpiry.setValue("1225");
+        mainPage.inputCardCVV.setValue("123");
+        mainPage.inputCreditCardNumber.click();
+        mainPage.payNowButton.click();
+        Selenide.sleep(5000);
+        Selenide.switchTo().frame(0);
+        mainPage.inputOTP.shouldHave(appear,Duration.ofSeconds(10));
+        mainPage.inputOTP.setValue("112233");
+        mainPage.okButton.click();
+        Selenide.sleep(5000);
+        assertEquals(mainPage.statusSuccessLabel.shouldHave(appear, Duration.ofSeconds(5)).isDisplayed(), true);
+    }
 }

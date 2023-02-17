@@ -16,5 +16,13 @@ public class MainPage {
     public SelenideElement inputPostalCode = $x("//*[@data-reactid='.0.0.1.0.3.0.0.5.1.0']");
     public SelenideElement checkoutButton = $(".cart-checkout");
     public SelenideElement iframeCheckout = $("#snap-midtrans");
+    public SelenideElement creditCardButton = $x("//a[@href='#/credit-card']");
+    public SelenideElement inputCreditCardNumber = $x("//*[@class='card-number-input-container']/input");
+    public SelenideElement inputCardExpiry = $x("//*[@id='card-expiry']");
+    public SelenideElement inputCardCVV = $x("//*[@id='card-cvv']");
+    public SelenideElement payNowButton = $x("//*[@class='card-pay-button-part']/button");
+    public SelenideElement inputOTP = $x("//*[@id='otp']");
+    public SelenideElement okButton = $x("//*[@name='ok']");
+    public SelenideElement statusSuccessLabel = $x("//*[@class='trans-status trans-success']");
 
 }
