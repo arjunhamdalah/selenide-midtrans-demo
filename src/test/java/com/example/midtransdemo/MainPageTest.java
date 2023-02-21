@@ -25,6 +25,8 @@ public class MainPageTest {
         ChromeOptions options = new ChromeOptions();
         options.setBinary("/opt/hostedtoolcache/chromium/1084013/x64/chrome");
         Configuration.browserCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
+        System.out.println(options);
+        System.out.println(Configuration.browserCapabilities.getCapability(ChromeOptions.CAPABILITY));
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
