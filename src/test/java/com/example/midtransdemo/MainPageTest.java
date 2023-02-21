@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
 
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
 import static org.testng.Assert.*;
@@ -24,6 +26,8 @@ public class MainPageTest {
 //        Configuration.browserSize = "1280x800";
         ChromeOptions options = new ChromeOptions();
         options.setBinary("/opt/hostedtoolcache/chromium/1084013/x64/chrome");
+        List<String> args = Arrays.asList("--disable-infobars", "--headless", "--no-sandbox", "--disable-gpu", "--disable-setuid-sandbox", "--disable-dev-shm-usage");
+        options.addArguments(args);
         Configuration.browserCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
         System.out.println(options);
         System.out.println(Configuration.browserCapabilities.getCapability(ChromeOptions.CAPABILITY));
