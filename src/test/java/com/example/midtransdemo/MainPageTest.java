@@ -21,6 +21,7 @@ public class MainPageTest {
     @BeforeClass
     public static void setUpAll() {
         Configuration.browserSize = "1280x800";
+        Configuration.browserCapabilities.setCapability("binary", "/opt/hostedtoolcache/chromium/1084013/x64/chrome");
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
