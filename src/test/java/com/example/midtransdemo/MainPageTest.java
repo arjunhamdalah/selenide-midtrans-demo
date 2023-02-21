@@ -21,7 +21,7 @@ public class MainPageTest {
 
     @BeforeClass
     public static void setUpAll() {
-        Configuration.browserSize = "1280x800";
+//        Configuration.browserSize = "1280x800";
         ChromeOptions options = new ChromeOptions();
         options.setBinary("/opt/hostedtoolcache/chromium/1084013/x64/chrome");
         Configuration.browserCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
