@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
 
 import java.time.Duration;
@@ -21,7 +22,9 @@ public class MainPageTest {
     @BeforeClass
     public static void setUpAll() {
         Configuration.browserSize = "1280x800";
-        Configuration.browserCapabilities.setCapability("binary", "/opt/hostedtoolcache/chromium/1084013/x64/chrome");
+        ChromeOptions options = new ChromeOptions();
+        options.setBinary("/opt/hostedtoolcache/chromium/1084013/x64/chrome");
+        Configuration.browserCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
