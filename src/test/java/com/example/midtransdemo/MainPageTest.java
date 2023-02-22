@@ -27,6 +27,7 @@ public class MainPageTest {
         Configuration.browserSize = "1280x800";
         ChromeOptions options = new ChromeOptions();
         options.setBinary("/usr/bin/chromium");
+        System.setProperty("webdriver.chrome.driver", "/opt/chromedriver/chromedriver");
         List<String> args = Arrays.asList("--disable-infobars", "--headless", "--no-sandbox", "--disable-gpu", "--disable-setuid-sandbox", "--disable-dev-shm-usage");
         options.addArguments(args);
         Configuration.browserCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
