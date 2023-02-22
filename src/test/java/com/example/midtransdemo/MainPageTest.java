@@ -26,12 +26,13 @@ public class MainPageTest {
     public static void setUpAll() {
         Configuration.browserSize = "1280x800";
         ChromeOptions options = new ChromeOptions();
-        options.setBinary("/usr/bin/chromium");
+        options.setBinary("/usr/bin/google-chrome-stable");
         System.setProperty("webdriver.chrome.driver", "/opt/chromedriver/chromedriver");
+        System.setProperty("selenide.browser", "Chrome");
         List<String> args = Arrays.asList("--disable-infobars", "--headless", "--no-sandbox", "--disable-gpu", "--disable-setuid-sandbox", "--disable-dev-shm-usage");
         options.addArguments(args);
         Configuration.browserCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
-        Configuration.browserBinary = "/usr/bin/chromium";
+        Configuration.browserBinary = "/usr/bin/google-chrome-stable";
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
