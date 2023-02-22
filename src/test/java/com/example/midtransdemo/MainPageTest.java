@@ -26,11 +26,11 @@ public class MainPageTest {
     public static void setUpAll() {
         Configuration.browserSize = "1280x800";
         ChromeOptions options = new ChromeOptions();
-//        options.setBinary("/opt/hostedtoolcache/chromium/1084013/x64/chrome");
+        options.setBinary("/usr/bin/chromium");
         List<String> args = Arrays.asList("--disable-infobars", "--headless", "--no-sandbox", "--disable-gpu", "--disable-setuid-sandbox", "--disable-dev-shm-usage");
         options.addArguments(args);
         Configuration.browserCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
-//        Configuration.browserBinary = "/opt/hostedtoolcache/chromium/1084013/x64/chrome";
+        Configuration.browserBinary = "/usr/bin/chromium";
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
