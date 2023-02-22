@@ -32,7 +32,7 @@ public class MainPageTest {
         List<String> args = Arrays.asList("--disable-infobars", "--headless", "--no-sandbox", "--disable-gpu", "--disable-setuid-sandbox", "--disable-dev-shm-usage");
         options.addArguments(args);
         Configuration.browserCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
-        Configuration.browserBinary = "/usr/bin/google-chrome-stable";
+//        Configuration.browserBinary = "/usr/bin/google-chrome-stable";
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
